@@ -11,4 +11,4 @@ jobs:
       - uses: infraway/medium-post-markdown@v1.5.0
         with:
           access_token: ${{ secrets.24209723f5dc66ab73db740bd01272c459c21905d9601d01db0421d89d813ed01 }}
-          markdown: ${{ steps.post.outputs.data }}
+          markdown: ${{ steps.first.outputs.data }}
