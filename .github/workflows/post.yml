@@ -1,18 +1,14 @@
+name: First Automated Post
+on: [push]
+
 jobs:
-  post-to-medium:
-    name: Post to Medium
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out reposity
-        uses: actions/checkout@v2
-      - name: Create Medium Post
-        uses: philips-software/post-to-medium-action@v0.4.1
+      - name: First post
+        id: post
+        run: echo "::set-output name=data::$(cat ./posts/first.md)"
+      - uses: infraway/medium-post-markdown@v1.5.0
         with:
-          integration_token: "${{ secrets.INTEGRATION_TOKEN }}"
-          file: "posts/first.md"
-          content_format: "markdown"
-          notify_followers: "false"
-          tags: "test,tag"
-          title: "title"
-          license: "all-rights-reserved"
-          publish_status: "draft"
+          access_token: ${{ secrets.24209723f5dc66ab73db740bd01272c459c21905d9601d01db0421d89d813ed01 }}
+          markdown: ${{ steps.post.outputs.data }}
